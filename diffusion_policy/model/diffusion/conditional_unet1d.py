@@ -233,7 +233,7 @@ class ConditionalUnet1D(nn.Module):
             if idx == len(self.up_modules) and len(h_local) > 0:
                 x = x + h_local[1]
             x = resnet2(x, global_feature)
-            x = upsample(x)
+            # x = upsample(x) # TODO: this causes problems with diffusion_spline_navigation
 
         x = self.final_conv(x)
 
